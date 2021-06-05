@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<title>read json</title>
+<script type="text/javascript">
+	var httpRequest = null;
+	function load(url) {
+		httpRequest = new XMLHttpRequest();
+		httpRequest.onreadystatechange = CallBack;
+		httpRequest.open("GET", url, true);
+		httpRequest.send(null);
+	}
+	function CallBack() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				var item = JSON.parse(httpRequest.responseText);
+				var willOut = '';
+				for (var i = 0; i < item.length; i++) {
+					willOut += '<table class="w3-table-all"><tr>';
+					willOut += '<td>' + item[i].author.book + '</td><td>'
+							+ item[i].author.pubDate + '</td>';
+					willOut += '</tr></table>';
+
+				}
+				document.getElementById("area").innerHTML = willOut;
+			} else {
+				alert("실패: " + httpRequest.status);
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="Json UTF rean"
+		onclick="load('test03UTF.json')" />
+	<input type="button" value="Json ANSI rean"
+		onclick="load('test03ANSI.json')" />
+	<div id="area" class="w3-container"></div>
+
+</body>
+</html>

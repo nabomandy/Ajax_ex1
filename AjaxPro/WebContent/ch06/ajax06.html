@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<title>Insert title here</title>
+<script>
+	$(document).ready(function() {
+		$("button").click(function() {
+			$.get("test06.jsp?aaa=111111&bbb=222", function(data, status) {
+				alert("Data: " + data + "\nStatus: " + status);
+				$("#view").html(data);
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<button>GET request</button>
+	<div id="view"></div>
+</body>
+</html>

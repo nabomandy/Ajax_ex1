@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>뉴스</title>
+<script>
+	function sendRequest(url, params, callback, method) {
+		httpRequest = new XMLHttpRequest();
+		url = url + "?" + params;
+		httpRequest.open(method, url, true);
+		httpRequest.onreadystatechange = callback;
+		httpRequest.send();
+	}
+
+	function loadNews() {
+		sendRequest("getNewsTitles.jsp", null, loadedNews, "GET");
+	}
+	function loadedNews() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				var newsList = document.getElementById("newsList");
+				newsList.innerHTML = httpRequest.responseText;
+			}
+		}
+	}
+	window.onload = function() {
+		loadNews();
+	}
+</script>
+</head>
+<body>
+<div id=
+"newsList"></div>
+
+</body>
+</html>

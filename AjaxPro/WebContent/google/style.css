@@ -1,0 +1,24 @@
+
+#keyword {
+    width : 300px;
+	border: 1px solid #999;
+	border-radius: 20px;
+	padding:10px; 
+	margin-top : 30px;
+}
+#d1 {
+
+position : relative;
+top : 10%;
+left : 25%;
+width : 50%;
+
+}
+a {
+text-decoration: none;
+color : black;
+}
+
+*:focus {
+    outline: none;
+}
